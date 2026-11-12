@@ -7,6 +7,10 @@
   <title>Каталог услуг — ModForge Studio</title>
   <link rel="icon" type="image/svg+xml" href="images/logo.svg">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script>
+    // Применяем сохранённую тему до отрисовки, чтобы не было «мигания»
+    try { if (localStorage.getItem('mf-theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch (e) {}
+  </script>
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" defer></script>
 </head>
@@ -26,7 +30,11 @@
             <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
           </ul>
         </nav>
-        <a class="button button--primary site-header__order-btn" href="contacts.html#order">Заказать</a>
+        <div class="site-header__tools">
+          <button class="icon-btn theme-toggle" type="button" aria-label="Переключить светлую / тёмную тему" title="Сменить тему"><i class="bi bi-sun" aria-hidden="true"></i></button>
+          <a class="icon-btn" href="cabinet.html" aria-label="Личный кабинет" title="Личный кабинет"><i class="bi bi-person-circle" aria-hidden="true"></i></a>
+          <a class="button button--primary site-header__order-btn" href="contacts.html#order">Заказать</a>
+        </div>
       </div>
     </div>
   </header>
@@ -189,10 +197,55 @@
             </div>
           </article>
         </div>
-          </article>
-        </div>
       </section>
     </div>
+
+    <!-- Калькулятор стоимости мода -->
+    <section class="calc" id="calculator">
+      <h2 class="section__title">Калькулятор стоимости мода</h2>
+      <p class="section__text">Выберите параметры — цена и срок пересчитаются сразу. Итоговую стоимость моддер подтвердит после изучения ТЗ.</p>
+      <div class="calc__box">
+        <form class="calc__form" id="calc-form">
+          <div class="calc__grid">
+            <div class="order-form__field">
+              <label class="order-form__label" for="calc-type">Тип модификации</label>
+              <select class="order-form__select" id="calc-type">
+                <option value="lighting">Ремастер освещения</option>
+                <option value="weapons">Сет оружия и брони</option>
+                <option value="perks">Ребаланс перков</option>
+                <option value="fixes">Исправление ошибок</option>
+                <option value="ui">Ретекстур интерфейса</option>
+                <option value="quest">Сюжетный квест</option>
+              </select>
+            </div>
+            <div class="order-form__field">
+              <label class="order-form__label" for="calc-game">Игра</label>
+              <select class="order-form__select" id="calc-game">
+                <option value="skyrim">Skyrim SE / AE</option>
+                <option value="fallout">Fallout 4</option>
+                <option value="witcher">The Witcher 3</option>
+                <option value="cyberpunk">Cyberpunk 2077</option>
+                <option value="other">Другая игра</option>
+              </select>
+            </div>
+          </div>
+          <span class="order-form__label">Дополнительно</span>
+          <div class="calc__extras">
+            <label class="calc__option"><input type="checkbox" name="extra" value="voice"> Озвучка <small>+6 000 ₽</small></label>
+            <label class="calc__option"><input type="checkbox" name="extra" value="textures"> 4K-текстуры <small>+4 000 ₽</small></label>
+            <label class="calc__option"><input type="checkbox" name="extra" value="support"> Поддержка 6 мес. <small>+3 000 ₽</small></label>
+            <label class="calc__option"><input type="checkbox" name="extra" value="urgent"> Срочно <small>+40%</small></label>
+          </div>
+        </form>
+        <div class="calc__result" aria-live="polite">
+          <span class="calc__label">Примерная стоимость</span>
+          <span class="calc__price" id="calc-price">8 000 ₽</span>
+          <span class="calc__time" id="calc-time">Срок: ~4 дня</span>
+          <button class="button button--primary button--full" type="button" id="calc-order-btn">Заказать по расчёту</button>
+          <span class="calc__note">Расчёт не является офертой.</span>
+        </div>
+      </div>
+    </section>
   </main>
 
   <dialog class="dialog" id="order-dialog">
@@ -238,6 +291,7 @@
             <li class="site-footer__list-item"><a class="site-footer__link" href="catalog.html">Каталог услуг</a></li>
             <li class="site-footer__list-item"><a class="site-footer__link" href="about.html">О нас</a></li>
             <li class="site-footer__list-item"><a class="site-footer__link" href="contacts.html">Контакты</a></li>
+            <li class="site-footer__list-item"><a class="site-footer__link" href="cabinet.html">Личный кабинет</a></li>
           </ul>
         </nav>
         <div class="site-footer__contacts">
