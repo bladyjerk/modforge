@@ -848,11 +848,11 @@ a:hover {
 .map {
   display: block;
   width: 100%;
-  min-height: 360px;
+  min-height: 500px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   /* тёмная тема карты под стиль сайта */
-  filter: grayscale(1) invert(0.9) contrast(0.9);
+  /*filter: grayscale(1) invert(0.9) contrast(0.9);*/
 }
 
 .contacts-map__link {

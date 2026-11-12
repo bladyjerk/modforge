@@ -75,6 +75,74 @@
           <iframe class="map" src="https://www.openstreetmap.org/export/embed.html?bbox=37.4700%2C55.6640%2C37.4920%2C55.6760&amp;layer=mapnik&amp;marker=55.66985%2C37.48055" title="Карта проезда к студии ModForge: пр. Вернадского, 78" loading="lazy"></iframe>
           <a class="contacts-map__link" href="https://www.openstreetmap.org/?mlat=55.66985&amp;mlon=37.48055#map=17/55.66985/37.48055" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> Открыть карту в новой вкладке</a>
         </div>
+      </section>
+            <!-- Правая колонка: форма заказа и FAQ -->
+      <div class="contacts-layout__col">
+        <!-- Форма заказа -->
+        <section class="contacts-layout__form-box" id="order">
+          <h2 class="section__title">Заявка на разработку</h2>
+          <form class="order-form" id="main-order-form">
+            <div class="order-form__field">
+              <label class="order-form__label" for="user-name">Ваше имя *</label>
+              <input class="order-form__input" type="text" id="user-name" name="name" required placeholder="Дмитрий">
+            </div>
+
+            <div class="order-form__field">
+              <label class="order-form__label" for="user-email">Электронная почта *</label>
+              <input class="order-form__input" type="email" id="user-email" name="email" required placeholder="dmitry@example.com">
+            </div>
+
+            <div class="order-form__field">
+              <label class="order-form__label" for="game-select">Игра *</label>
+              <select class="order-form__select" id="game-select" name="game" required>
+                <option value="">Выберите игру</option>
+                <option value="skyrim">Skyrim Special Edition</option>
+                <option value="witcher3">The Witcher 3</option>
+                <option value="cyberpunk">Cyberpunk 2077</option>
+                <option value="fallout4">Fallout 4</option>
+                <option value="gta5">GTA V</option>
+                <option value="other">Другая игра</option>
+              </select>
+            </div>
+
+            <div class="order-form__field">
+              <label class="order-form__label" for="mod-type">Тип модификации *</label>
+              <select class="order-form__select" id="mod-type" name="mod_type" required>
+                <option value="">Выберите тип</option>
+                <option value="graphics">Графика и текстуры</option>
+                <option value="items">3D Модели, оружие, броня</option>
+                <option value="gameplay">Скрипты и новый геймплей</option>
+                <option value="bugfix">Исправление вылетов / патч</option>
+              </select>
+            </div>
+
+            <div class="order-form__field">
+              <label class="order-form__label" for="user-budget">Предполагаемый бюджет</label>
+              <select class="order-form__select" id="user-budget" name="budget">
+                <option value="small">До 10 000 ₽</option>
+                <option value="medium">10 000 ₽ – 30 000 ₽</option>
+                <option value="large">От 30 000 ₽</option>
+              </select>
+            </div>
+
+            <div class="order-form__field">
+              <label class="order-form__label" for="user-desc">Описание желаемых изменений *</label>
+              <textarea class="order-form__textarea" id="user-desc" name="description" rows="4" required placeholder="Опишите, что должен делать мод..."></textarea>
+            </div>
+
+            <div class="order-form__field">
+              <label class="order-form__checkbox-label">
+                <input type="checkbox" required> Согласен на обработку персональных данных
+              </label>
+            </div>
+
+            <button class="button button--primary button--full" type="submit">Отправить заявку в студию</button>
+          </form>
+
+          <div class="success-message" id="contacts-success" hidden>
+            ✓ Спасибо! Ваша заявка принята. Моддер свяжется с вами в течение 24 часов.
+          </div>
+        </section>
 
         <!-- Раскрывающийся FAQ -->
         <div class="faq-block">
@@ -101,73 +169,7 @@
             </div>
           </details>
         </div>
-      </section>
-
-      <!-- Форма заказа -->
-      <section class="contacts-layout__form-box" id="order">
-        <h2 class="section__title">Заявка на разработку</h2>
-        <form class="order-form" id="main-order-form">
-          <div class="order-form__field">
-            <label class="order-form__label" for="user-name">Ваше имя *</label>
-            <input class="order-form__input" type="text" id="user-name" name="name" required placeholder="Дмитрий">
-          </div>
-
-          <div class="order-form__field">
-            <label class="order-form__label" for="user-email">Электронная почта *</label>
-            <input class="order-form__input" type="email" id="user-email" name="email" required placeholder="dmitry@example.com">
-          </div>
-
-          <div class="order-form__field">
-            <label class="order-form__label" for="game-select">Игра *</label>
-            <select class="order-form__select" id="game-select" name="game" required>
-              <option value="">Выберите игру</option>
-              <option value="skyrim">Skyrim Special Edition</option>
-              <option value="witcher3">The Witcher 3</option>
-              <option value="cyberpunk">Cyberpunk 2077</option>
-              <option value="fallout4">Fallout 4</option>
-              <option value="gta5">GTA V</option>
-              <option value="other">Другая игра</option>
-            </select>
-          </div>
-
-          <div class="order-form__field">
-            <label class="order-form__label" for="mod-type">Тип модификации *</label>
-            <select class="order-form__select" id="mod-type" name="mod_type" required>
-              <option value="">Выберите тип</option>
-              <option value="graphics">Графика и текстуры</option>
-              <option value="items">3D Модели, оружие, броня</option>
-              <option value="gameplay">Скрипты и новый геймплей</option>
-              <option value="bugfix">Исправление вылетов / патч</option>
-            </select>
-          </div>
-
-          <div class="order-form__field">
-            <label class="order-form__label" for="user-budget">Предполагаемый бюджет</label>
-            <select class="order-form__select" id="user-budget" name="budget">
-              <option value="small">До 10 000 ₽</option>
-              <option value="medium">10 000 ₽ – 30 000 ₽</option>
-              <option value="large">От 30 000 ₽</option>
-            </select>
-          </div>
-
-          <div class="order-form__field">
-            <label class="order-form__label" for="user-desc">Описание желаемых изменений *</label>
-            <textarea class="order-form__textarea" id="user-desc" name="description" rows="4" required placeholder="Опишите, что должен делать мод..."></textarea>
-          </div>
-
-          <div class="order-form__field">
-            <label class="order-form__checkbox-label">
-              <input type="checkbox" required> Согласен на обработку персональных данных
-            </label>
-          </div>
-
-          <button class="button button--primary button--full" type="submit">Отправить заявку в студию</button>
-        </form>
-
-        <div class="success-message" id="contacts-success" hidden>
-          ✓ Спасибо! Ваша заявка принята. Моддер свяжется с вами в течение 24 часов.
-        </div>
-      </section>
+      </div>
     </div>
   </main>
 
