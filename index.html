@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ModForge Studio — профессиональная разработка модификаций для компьютерных игр.">
+  <title>Главная — ModForge Studio</title>
+  <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body class="page">
+  <header class="site-header">
+    <div class="site-header__inner container">
+      <a class="site-header__logo" href="index.html">
+        <img class="site-header__logo-img" src="images/logo.svg" alt="" width="36" height="36">
+        ModForge<span>Studio</span>
+      </a>
+      <div class="site-header__actions">
+        <nav class="site-nav" aria-label="Основная навигация">
+          <ul class="site-nav__list">
+            <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="index.html" aria-current="page">Главная</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог услуг</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="about.html">О нас</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+          </ul>
+        </nav>
+        <a class="button button--primary site-header__order-btn" href="contacts.html#order">Заказать</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <!-- Hero Banner -->
+    <section class="hero">
+      <div class="hero__inner container">
+        <div class="hero__badge">Студия модификаций №1</div>
+        <h1 class="hero__title">Создаем моды любой сложности для ваших любимых игр</h1>
+        <p class="hero__text">
+          От графических ремастеров и новых механик до полной конверсии геймплея. Профессиональная интеграция, оптимизация и поддержка на платформах уровня Nexus Mods.
+        </p>
+        <div class="hero__actions">
+          <a class="button button--primary" href="contacts.html#order">Заказать разработку</a>
+          <a class="button button--secondary" href="about.html">Подробнее о нас</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Статистика -->
+    <section class="section section--dark">
+      <div class="container stats-grid">
+        <div class="stat-card">
+          <span class="stat-card__number">150+</span>
+          <span class="stat-card__label">Выпущенных модов</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card__number">2.5M+</span>
+          <span class="stat-card__label">Загрузок на Nexus & ModDB</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card__number">99.4%</span>
+          <span class="stat-card__label">Совместимость и стабильность</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card__number">24/7</span>
+          <span class="stat-card__label">Поддержка клиентов</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Этапы работы -->
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section__header">
+          <div>
+            <h2 class="section__title">Как строится процесс разработки</h2>
+            <p class="section__subtitle">Прозрачные этапы от первой идеи до готового архива</p>
+          </div>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card">
+            <span class="step-card__num">01</span>
+            <h3 class="step-card__title">ТЗ и анализ движка</h3>
+            <p class="step-card__text">Изучаем вашу идею, структуру файлов игры и проверяем техническую возможность реализации без ограничений.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__num">02</span>
+            <h3 class="step-card__title">Прототип и концепт</h3>
+            <p class="step-card__text">Создаём черновой билд механики или модель, согласуем внешний вид и утверждаем таймлайн проекта.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__num">03</span>
+            <h3 class="step-card__title">Разработка и сборка</h3>
+            <p class="step-card__text">Финальное моделирование, скриптинг логики, настройка анимаций и упаковка в игровые архивы (.ba2, .archive, .pak).</p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__num">04</span>
+            <h3 class="step-card__title">Стресс-тест и релиз</h3>
+            <p class="step-card__text">Тестируем на чистой игре и со сборкой 100+ модов. Передаём вам файлы, инструкцию по установке и техпаспорт.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Популярные услуги -->
+    <section class="section container" id="popular-services">
+      <div class="section__header">
+        <div>
+          <h2 class="section__title">Популярные услуги</h2>
+          <p class="section__subtitle">Самые востребованные типы кастомизации</p>
+        </div>
+        <a class="section__link" href="catalog.html">Все услуги в каталоге →</a>
+      </div>
+      <div class="cards-grid">
+        <article class="card">
+          <span class="badge badge--popular">Популярное</span>
+          <img class="card__image" src="images/texture-pack.jpg" alt="4K Текстур-пак" loading="lazy">
+          <div class="card__body">
+            <h3 class="card__title">4K Текстур-пак и шейдеры</h3>
+            <p class="card__text">Полная переработка визуальной части, PBR-материалы, улучшение освещения и погодных эффектов.</p>
+            <div class="card__meta">
+              <span class="card__price">от 12 000 ₽</span>
+              <span class="card__time">от 5 дней</span>
+            </div>
+            <button class="button button--primary card__button open-dialog-btn" data-title="4K Текстур-пак и шейдеры">Заказать</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <span class="badge badge--new">Новинка</span>
+          <img class="card__image" src="images/companion.jpg" alt="Кастомный компаньон" loading="lazy">
+          <div class="card__body">
+            <h3 class="card__title">Кастомный компаньон с озвучкой</h3>
+            <p class="card__text">Уникальный NPC, собственная ветка квестов, ИИ-поведение в бою и глубокая интеграция в сюжет.</p>
+            <div class="card__meta">
+              <span class="card__price">от 25 000 ₽</span>
+              <span class="card__time">от 14 дней</span>
+            </div>
+            <button class="button button--primary card__button open-dialog-btn" data-title="Кастомный компаньон">Заказать</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <span class="badge badge--dev">В разработке</span>
+          <img class="card__image" src="images/combat-system.jpg" alt="Боевая система" loading="lazy">
+          <div class="card__body">
+            <h3 class="card__title">Новая боевая система</h3>
+            <p class="card__text">Ребаланс анимаций, таймингов уворотов, комбо-ударов, выносливости и механики парирования.</p>
+            <div class="card__meta">
+              <span class="card__price">от 30 000 ₽</span>
+              <span class="card__time">от 20 дней</span>
+            </div>
+            <button class="button button--primary card__button open-dialog-btn" data-title="Новая боевая система">Заказать</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Поддерживаемые игры -->
+    <section class="section section--dark" id="games">
+      <div class="container">
+        <div class="section__header">
+          <div>
+            <h2 class="section__title">Поддерживаемые игры</h2>
+            <p class="section__subtitle">Работаем с официальными редакторами и кастомными инжекторами</p>
+          </div>
+          <a class="section__link" href="about.html">Подробнее о проектах →</a>
+        </div>
+        <div class="games-grid">
+          <div class="game-badge">
+            <span class="game-badge__icon">🐺</span>
+            <div class="game-badge__info">
+              <strong>The Witcher 3</strong>
+              <span>REDkit / WolvenKit</span>
+            </div>
+          </div>
+          <div class="game-badge">
+            <span class="game-badge__icon">🦾</span>
+            <div class="game-badge__info">
+              <strong>Cyberpunk 2077</strong>
+              <span>TweakXL / ArchiveXL</span>
+            </div>
+          </div>
+          <div class="game-badge">
+            <span class="game-badge__icon">🐉</span>
+            <div class="game-badge__info">
+              <strong>TES V: Skyrim</strong>
+              <span>Creation Kit / SKSE</span>
+            </div>
+          </div>
+          <div class="game-badge">
+            <span class="game-badge__icon">☢️</span>
+            <div class="game-badge__info">
+              <strong>Fallout 4</strong>
+              <span>Creation Kit / F4SE</span>
+            </div>
+          </div>
+          <div class="game-badge">
+            <span class="game-badge__icon">🎲</span>
+            <div class="game-badge__info">
+              <strong>Baldur's Gate 3</strong>
+              <span>BG3 Toolkit / Osiris</span>
+            </div>
+          </div>
+          <div class="game-badge">
+            <span class="game-badge__icon">☣️</span>
+            <div class="game-badge__info">
+              <strong>S.T.A.L.K.E.R. 2</strong>
+              <span>Unreal Engine 5 Modding</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section class="section container" id="reviews">
+      <div class="section__header">
+        <div>
+          <h2 class="section__title">Отзывы заказчиков</h2>
+          <p class="section__subtitle">Что говорят игроки и авторы игровых сборок</p>
+        </div>
+      </div>
+      <div class="cards-grid">
+        <div class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">«Заказывал кастомную броню и оружие для стрима по Skyrim. Сделали модель уровня AAA, текстуры 4K сидят идеально, ни одного краша за 60 часов игры!»</p>
+          <div class="review-card__author">
+            <span class="review-card__name">Алексей «NordWolf»</span>
+            <span class="review-card__sub">Twitch-стример</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">«Команда ModForge переписала багованный скрипт квеста для Cyberpunk 2077. Всё летает, мода скачали уже более 40 000 раз на Nexus Mods. Лучшие профи в РФ.»</p>
+          <div class="review-card__author">
+            <span class="review-card__name">Дмитрий К.</span>
+            <span class="review-card__sub">Создатель модпака NightCityOverhaul</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">«Отличная коммуникация! Помогли составить чёткое ТЗ на перебалансировку боёвки в Ведьмаке 3. Сдали проект раньше срока и предоставили видео-отчёт.»</p>
+          <div class="review-card__author">
+            <span class="review-card__name">Михаил Смирнов</span>
+            <span class="review-card__sub">Заказчик мода боевой системы</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Финальный CTA Баннер -->
+    <section class="section container">
+      <div class="cta-banner">
+        <h2 class="cta-banner__title">Есть идея уникальной модификации?</h2>
+        <p class="cta-banner__text">
+          Опишите ваши пожелания, и мы подготовим бесплатный расчет стоимости и сроков в течение 24 часов.
+        </p>
+        <div class="cta-banner__actions">
+          <a class="button button--primary" href="contacts.html#order">Оставить заявку на мод</a>
+          <a class="button button--secondary" href="catalog.html">Посмотреть каталог услуг</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Диалог заказа -->
+  <dialog class="dialog" id="order-dialog">
+    <div class="dialog__content">
+      <h2 class="dialog__title">Оформить заявку</h2>
+      <form class="order-form" id="order-dialog-form">
+        <input type="hidden" id="dialog-service" name="service">
+        <div class="order-form__field">
+          <label class="order-form__label" for="dlg-name">Ваше имя *</label>
+          <input class="order-form__input" type="text" id="dlg-name" required placeholder="Иван">
+        </div>
+        <div class="order-form__field">
+          <label class="order-form__label" for="dlg-email">Электронная почта *</label>
+          <input class="order-form__input" type="email" id="dlg-email" required placeholder="name@example.com">
+        </div>
+        <div class="order-form__field">
+          <label class="order-form__label" for="dlg-comment">Пожелания по моду</label>
+          <textarea class="order-form__textarea" id="dlg-comment" rows="3" placeholder="Укажите игру и детали"></textarea>
+        </div>
+        <div class="dialog__actions">
+          <button class="button button--secondary" type="button" id="close-dialog-btn">Закрыть</button>
+          <button class="button button--primary" type="submit">Отправить</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- Подвал -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__about">
+          <a class="site-footer__logo" href="index.html">
+            <img class="site-footer__logo-img" src="images/logo.svg" alt="" width="32" height="32">
+            ModForge<span>Studio</span>
+          </a>
+          <p class="site-footer__slogan">Студия разработки модификаций для компьютерных игр: графика, новые предметы, скрипты и исправление ошибок. Стабильный код и поддержка после патчей.</p>
+        </div>
+        <nav class="site-footer__nav" aria-label="Разделы сайта">
+          <h2 class="site-footer__title">Разделы</h2>
+          <ul class="site-footer__list">
+            <li class="site-footer__list-item"><a class="site-footer__link" href="index.html">Главная</a></li>
+            <li class="site-footer__list-item"><a class="site-footer__link" href="catalog.html">Каталог услуг</a></li>
+            <li class="site-footer__list-item"><a class="site-footer__link" href="about.html">О нас</a></li>
+            <li class="site-footer__list-item"><a class="site-footer__link" href="contacts.html">Контакты</a></li>
+          </ul>
+        </nav>
+        <div class="site-footer__contacts">
+          <h2 class="site-footer__title">Контакты</h2>
+          <p class="site-footer__contact"><i class="bi bi-geo-alt" aria-hidden="true"></i>г. Москва, пр. Вернадского, д. 78, РТУ МИРЭА</p>
+          <p class="site-footer__contact"><i class="bi bi-telephone" aria-hidden="true"></i><a href="tel:+74957885699">+7 (495) 788-56-99</a></p>
+          <p class="site-footer__contact"><i class="bi bi-clock" aria-hidden="true"></i>Пн–Пт: 10:00–19:00 · Сб: 11:00–16:00 · Вс: выходной</p>
+          <p class="site-footer__contact"><i class="bi bi-envelope" aria-hidden="true"></i><a href="mailto:dev@modforge.ru">dev@modforge.ru</a></p>
+          <p class="site-footer__contact"><i class="bi bi-telegram" aria-hidden="true"></i><a href="https://t.me/modforge_studio" target="_blank" rel="noopener">@modforge_studio</a></p>
+          <p class="site-footer__contact"><i class="bi bi-chat-dots" aria-hidden="true"></i><a href="https://vk.com/modforge_studio" target="_blank" rel="noopener">vk.com/modforge_studio</a></p>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p>&copy; 2026 ModForge Studio. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Кнопка Наверх -->
+  <button class="back-to-top" id="back-to-top" aria-label="Вернуться наверх">
+    <div class="back-to-top__inner">
+      <span class="back-to-top__arrow">▲</span>
+    </div>
+  </button>
+</body>
+</html>

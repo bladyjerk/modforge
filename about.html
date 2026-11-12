@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="О нас — студия ModForge: история команды, преимущества, поддерживаемые игры и наши проекты.">
+  <title>О нас — ModForge Studio</title>
+  <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body class="page">
+  <header class="site-header">
+    <div class="site-header__inner container">
+      <a class="site-header__logo" href="index.html">
+        <img class="site-header__logo-img" src="images/logo.svg" alt="" width="36" height="36">
+        ModForge<span>Studio</span>
+      </a>
+      <div class="site-header__actions">
+        <nav class="site-nav" aria-label="Основная навигация">
+          <ul class="site-nav__list">
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог услуг</a></li>
+            <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="about.html" aria-current="page">О нас</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+          </ul>
+        </nav>
+        <a class="button button--primary site-header__order-btn" href="contacts.html#order">Заказать</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-content container">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a class="breadcrumbs__link" href="index.html">Главная</a>
+      <span class="breadcrumbs__separator">/</span>
+      <span class="breadcrumbs__current">О нас</span>
+    </nav>
+
+    <!-- Описание студии -->
+    <section class="section">
+      <h1 class="section__title">О нас и нашей студии</h1>
+      <p class="section__text">
+        ModForge Studio основана энтузиастами игрового моддинга. Мы разрабатываем надежные, протестированные дополнения, которые скачивают сотни тысяч игроков на Nexus Mods и ModDB.
+      </p>
+    </section>
+
+    <!-- Преимущества (перенесены с главной) -->
+    <section class="section" id="advantages">
+      <h2 class="section__title">Почему выбирают ModForge</h2>
+      <p class="section__text">Качественный моддинг без вылетов и просадок FPS.</p>
+      <div class="cards-grid cards-grid--4">
+        <div class="feature-card">
+          <div class="feature-card__icon">🛡️</div>
+          <h3 class="feature-card__title">Чистый и стабильный код</h3>
+          <p class="feature-card__text">Пишем скрипты по стандартам разработчиков движков. Без утечек памяти, конфликтов с другими модами и повреждения сохранений.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">⚡</div>
+          <h3 class="feature-card__title">Оптимизация производительности</h3>
+          <p class="feature-card__text">Генерируем LOD-сетки, оптимизируем полигонаж 4K-моделей и текстурные атласы для сохранения стабильного фреймрейта.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">🎨</div>
+          <h3 class="feature-card__title">Собственный арт и звук</h3>
+          <p class="feature-card__text">3D-моделирование в Blender, текстурирование в Substance Painter и сведение саунд-дизайна под оригинальный стиль игры.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">🔄</div>
+          <h3 class="feature-card__title">Поддержка после патчей</h3>
+          <p class="feature-card__text">Бесплатно обновляем скрипты и структуру мода в случае выхода официальных патчей или обновлений игры в течение 3 месяцев.</p>
+        </div>
+      </div>
+      <h3 class="section__subheading">Наши стандарты качества</h3>
+      <div class="cards-grid">
+        <article class="card">
+          <img class="card__image" src="images/clean-code.jpg" alt="Чистый код" loading="lazy">
+          <div class="card__body">
+            <h3 class="card__title">Чистый код и скрипты</h3>
+            <p class="card__text">Модификации не вызывают вылетов и утечек памяти, легко удаляются без поломки сохранений.</p>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card__image" src="images/compatibility.jpg" alt="Совместимость" loading="lazy">
+          <div class="card__body">
+            <h3 class="card__title">Совместимость</h3>
+            <p class="card__text">Создаем патчи совместимости под популярные сборки и мод-менеджеры (Vortex, MO2).</p>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card__image" src="images/lighting-remaster.jpg" alt="Оптимизация" loading="lazy">
+          <div class="card__body">
+            <h3 class="card__title">Оптимизация 4K/PBR</h3>
+            <p class="card__text">Текстуры высокого разрешения и кастомные шейдеры с бережным отношением к FPS.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Поддерживаемые игры -->
+    <section class="section" id="games">
+      <h2 class="section__title">Игры, с которыми мы работаем</h2>
+      <div class="games-grid">
+        <div class="game-tag">The Elder Scrolls V: Skyrim</div>
+        <div class="game-tag">The Witcher 3: Wild Hunt</div>
+        <div class="game-tag">Cyberpunk 2077</div>
+        <div class="game-tag">Fallout 4 / New Vegas</div>
+        <div class="game-tag">Grand Theft Auto V</div>
+        <div class="game-tag">Minecraft (Java/Forge/Fabric)</div>
+        <div class="game-tag">Mount & Blade II: Bannerlord</div>
+        <div class="game-tag">S.T.A.L.K.E.R. Anomaly</div>
+      </div>
+    </section>
+
+    <!-- Проекты студии -->
+    <section class="section">
+      <h2 class="section__title">Выполненные модификации</h2>
+      <div class="cards-grid">
+        <article class="portfolio-card">
+          <img class="portfolio-card__img" src="images/texture-pack.jpg" alt="Cyberpunk 2077 Mod" loading="lazy">
+          <div class="portfolio-card__body">
+            <span class="portfolio-card__game-tag">Cyberpunk 2077</span>
+            <h3 class="portfolio-card__title">NightCity Overhaul 2.0</h3>
+            <p class="portfolio-card__text">
+              Масштабный визуальный пак: замена 1200+ текстур дорожного покрытия, неоновых вывесок и улучшенные частицы дыма.
+            </p>
+            <div class="portfolio-card__tags">
+              <span class="tech-tag">WolvenKit</span>
+              <span class="tech-tag">Blender</span>
+              <span class="tech-tag">Substance Painter</span>
+            </div>
+            <button class="button button--secondary button--full open-project-modal" 
+                    data-title="NightCity Overhaul 2.0"
+                    data-game="Cyberpunk 2077"
+                    data-desc="Модификация полностью перерабатывает городскую среду Найт-Сити. Включает 4K PBR текстуры асфальта, обновлённые шейдеры дождя и исправляет мерцание отражений SSR. Более 450 000 скачиваний на Nexus Mods.">
+              Подробнее о проекте
+            </button>
+          </div>
+        </article>
+
+        <article class="portfolio-card">
+          <img class="portfolio-card__img" src="images/weapon-set.jpg" alt="Skyrim SE Mod" loading="lazy">
+          <div class="portfolio-card__body">
+            <span class="portfolio-card__game-tag">Skyrim SE</span>
+            <h3 class="portfolio-card__title">Nordic Relics & Armory</h3>
+            <p class="portfolio-card__text">
+              Добавление 24 уникальных комплектов древнего нордского оружия и тяжелых доспехов с пользовательскими зачарованиями.
+            </p>
+            <div class="portfolio-card__tags">
+              <span class="tech-tag">Creation Kit</span>
+              <span class="tech-tag">Papyrus</span>
+              <span class="tech-tag">NifSkope</span>
+            </div>
+            <button class="button button--secondary button--full open-project-modal" 
+                    data-title="Nordic Relics & Armory"
+                    data-game="Skyrim SE"
+                    data-desc="Оружие распространено по уровневым спискам боссов курганов. Интегрированы уникальные звуки ударов и баланс под Requiem.">
+              Подробнее о проекте
+            </button>
+          </div>
+        </article>
+
+        <article class="portfolio-card">
+          <img class="portfolio-card__img" src="images/companion.jpg" alt="The Witcher 3 Mod" loading="lazy">
+          <div class="portfolio-card__body">
+            <span class="portfolio-card__game-tag">The Witcher 3</span>
+            <h3 class="portfolio-card__title">Alchemy & Combat Redone</h3>
+            <p class="portfolio-card__text">
+              Полный пересмотр системы интоксикации, добавление тактических механик уклонения и рецептов бомб.
+            </p>
+            <div class="portfolio-card__tags">
+              <span class="tech-tag">W3Edit</span>
+              <span class="tech-tag">Witcher Script</span>
+              <span class="tech-tag">REDkit</span>
+            </div>
+            <button class="button button--secondary button--full open-project-modal" 
+                    data-title="Alchemy & Combat Redone"
+                    data-game="The Witcher 3"
+                    data-desc="Мод делает схватки на максимальной сложности ближе к книжному канону: зелья действуют дольше, но требуют подготовки до начала боя.">
+              Подробнее о проекте
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="dialog" id="project-dialog">
+    <div class="dialog__content">
+      <h2 class="dialog__title" id="proj-dialog-title">Название проекта</h2>
+      <p class="dialog__subtitle" id="proj-dialog-game" style="color: var(--color-primary); margin-bottom: 12px; font-weight: bold;"></p>
+      <p class="dialog__text" id="proj-dialog-desc" style="color: var(--color-muted); line-height: 1.6;"></p>
+      <div class="dialog__actions">
+        <a class="button button--primary" href="contacts.html#order">Заказать аналогичный мод</a>
+        <button class="button button--secondary" type="button" id="close-project-btn">Закрыть</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Подвал -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__about">
+          <a class="site-footer__logo" href="index.html">
+            <img class="site-footer__logo-img" src="images/logo.svg" alt="" width="32" height="32">
+            ModForge<span>Studio</span>
+          </a>
+          <p class="site-footer__slogan">Студия разработки модификаций для компьютерных игр: графика, новые предметы, скрипты и исправление ошибок. Стабильный код и поддержка после патчей.</p>
+        </div>
+        <nav class="site-footer__nav" aria-label="Разделы сайта">
+          <h2 class="site-footer__title">Разделы</h2>
+          <ul class="site-footer__list">
+            <li class="site-footer__list-item"><a class="site-footer__link" href="index.html">Главная</a></li>
+            <li class="site-footer__list-item"><a class="site-footer__link" href="catalog.html">Каталог услуг</a></li>
+            <li class="site-footer__list-item"><a class="site-footer__link" href="about.html">О нас</a></li>
+            <li class="site-footer__list-item"><a class="site-footer__link" href="contacts.html">Контакты</a></li>
+          </ul>
+        </nav>
+        <div class="site-footer__contacts">
+          <h2 class="site-footer__title">Контакты</h2>
+          <p class="site-footer__contact"><i class="bi bi-geo-alt" aria-hidden="true"></i>г. Москва, пр. Вернадского, д. 78, РТУ МИРЭА</p>
+          <p class="site-footer__contact"><i class="bi bi-telephone" aria-hidden="true"></i><a href="tel:+74957885699">+7 (495) 788-56-99</a></p>
+          <p class="site-footer__contact"><i class="bi bi-clock" aria-hidden="true"></i>Пн–Пт: 10:00–19:00 · Сб: 11:00–16:00 · Вс: выходной</p>
+          <p class="site-footer__contact"><i class="bi bi-envelope" aria-hidden="true"></i><a href="mailto:dev@modforge.ru">dev@modforge.ru</a></p>
+          <p class="site-footer__contact"><i class="bi bi-telegram" aria-hidden="true"></i><a href="https://t.me/modforge_studio" target="_blank" rel="noopener">@modforge_studio</a></p>
+          <p class="site-footer__contact"><i class="bi bi-chat-dots" aria-hidden="true"></i><a href="https://vk.com/modforge_studio" target="_blank" rel="noopener">vk.com/modforge_studio</a></p>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p>&copy; 2026 ModForge Studio. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Вернуться наверх">
+    <div class="back-to-top__inner">
+      <span class="back-to-top__arrow">▲</span>
+    </div>
+  </button>
+</body>
+</html>

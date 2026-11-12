@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Логотип ModForge Studio">
+  <defs>
+    <linearGradient id="mf-g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#48cae4"/>
+      <stop offset="1" stop-color="#0077b6"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#0f1117" stroke="url(#mf-g)" stroke-width="3"/>
+  <!-- наковальня -->
+  <path d="M14 38h30c0 4-3 6-7 6h-3l3 6H23l3-6h-3c-5 0-9-2-9-6z" fill="url(#mf-g)"/>
+  <!-- молот -->
+  <g transform="rotate(35 32 22)">
+    <rect x="22" y="10" width="20" height="10" rx="2.5" fill="#e6edf3"/>
+    <rect x="30" y="19" width="4" height="15" rx="2" fill="#e6edf3"/>
+  </g>
+  <!-- искры -->
+  <path d="M12 32l-4-3M14 27l-3-5M50 32l5-3" stroke="#f77f00" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

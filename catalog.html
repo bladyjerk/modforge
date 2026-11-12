@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Каталог услуг по разработке модов: графика, геймплей, скрипты, фиксы.">
+  <title>Каталог услуг — ModForge Studio</title>
+  <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body class="page">
+  <header class="site-header">
+    <div class="site-header__inner container">
+      <a class="site-header__logo" href="index.html">
+        <img class="site-header__logo-img" src="images/logo.svg" alt="" width="36" height="36">
+        ModForge<span>Studio</span>
+      </a>
+      <div class="site-header__actions">
+        <nav class="site-nav" aria-label="Основная навигация">
+          <ul class="site-nav__list">
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+            <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="catalog.html" aria-current="page">Каталог услуг</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="about.html">О нас</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+          </ul>
+        </nav>
+        <a class="button button--primary site-header__order-btn" href="contacts.html#order">Заказать</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-content container">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a class="breadcrumbs__link" href="index.html">Главная</a>
+      <span class="breadcrumbs__separator">/</span>
+      <span class="breadcrumbs__current">Каталог услуг</span>
+    </nav>
+
+    <div class="catalog-layout">
+      <!-- Сайдбар фильтров -->
+      <aside class="catalog-layout__sidebar catalog-filters">
+        <h2 class="catalog-filters__title">Фильтры</h2>
+        <form class="catalog-filters__form" id="catalog-filter-form">
+          <fieldset class="catalog-filters__group">
+            <legend class="catalog-filters__legend">Категория</legend>
+            <label class="catalog-filters__label">
+              <input type="radio" name="cat-filter" value="all" checked> Все категории
+            </label>
+            <label class="catalog-filters__label">
+              <input type="radio" name="cat-filter" value="graphics"> Графические моды
+            </label>
+            <label class="catalog-filters__label">
+              <input type="radio" name="cat-filter" value="items"> Новые предметы и оружие
+            </label>
+            <label class="catalog-filters__label">
+              <input type="radio" name="cat-filter" value="gameplay"> Изменение геймплея
+            </label>
+            <label class="catalog-filters__label">
+              <input type="radio" name="cat-filter" value="fixes"> Исправление ошибок
+            </label>
+          </fieldset>
+
+          <fieldset class="catalog-filters__group">
+            <legend class="catalog-filters__legend">Поддерживаемая игра</legend>
+            <select class="order-form__select" name="game-filter">
+              <option value="all">Все игры</option>
+              <option value="skyrim">Skyrim Special Edition</option>
+              <option value="witcher">The Witcher 3</option>
+              <option value="cyberpunk">Cyberpunk 2077</option>
+              <option value="fallout">Fallout 4</option>
+            </select>
+          </fieldset>
+
+          <button class="button button--secondary button--full" type="reset">Сбросить фильтры</button>
+        </form>
+      </aside>
+
+      <!-- Карточки услуг -->
+      <section class="catalog-layout__content">
+        <h1 class="section__title">Услуги по созданию модификаций</h1>
+        <p class="section__text">Выберите нужный формат доработки или закажите комплексное решение.</p>
+
+                <div class="cards-grid">
+          <!-- 1. Ремастер освещения -->
+          <article class="card" data-category="graphics">
+            <span class="badge badge--popular">Популярное</span>
+            <img class="card__image" src="images/lighting-remaster.jpg" alt="Ремастер освещения" loading="lazy">
+            <div class="card__body">
+              <h3 class="card__title">Ремастер освещения и ENB/Reshade</h3>
+              <p class="card__text">Кастомные шейдерные пресеты, настройка объемного света, цветокоррекция.</p>
+              <div class="card__meta">
+                <span class="card__price">от 8 000 ₽</span>
+                <span class="card__time">3–5 дней</span>
+              </div>
+              <div class="card__actions">
+                <button class="button button--secondary open-details-btn" data-service="lighting" type="button">Подробнее</button>
+                <button class="button button--primary open-dialog-btn" data-title="Ремастер освещения" type="button">Заказать</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. Сет оружия и брони -->
+          <article class="card" data-category="items">
+            <span class="badge badge--new">Новинка</span>
+            <img class="card__image" src="images/weapon-set.jpg" alt="Сет оружия" loading="lazy">
+            <div class="card__body">
+              <h3 class="card__title">Сет кастомного оружия и брони</h3>
+              <p class="card__text">3D-моделирование, развертка, 4K PBR текстурирование, риггинг и анимация.</p>
+              <div class="card__meta">
+                <span class="card__price">от 15 000 ₽</span>
+                <span class="card__time">7–10 дней</span>
+              </div>
+              <div class="card__actions">
+                <button class="button button--secondary open-details-btn" data-service="weapons" type="button">Подробнее</button>
+                <button class="button button--primary open-dialog-btn" data-title="Сет оружия и брони" type="button">Заказать</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. Ребаланс перков -->
+          <article class="card" data-category="gameplay">
+            <span class="badge badge--dev">В разработке</span>
+            <img class="card__image" src="images/combat-system.jpg" alt="Ребаланс перков" loading="lazy">
+            <div class="card__body">
+              <h3 class="card__title">Комплексный ребаланс перков</h3>
+              <p class="card__text">Переработка деревьев навыков, новые классы, скрипты пассивных умений.</p>
+              <div class="card__meta">
+                <span class="card__price">от 18 000 ₽</span>
+                <span class="card__time">10–14 дней</span>
+              </div>
+              <div class="card__actions">
+                <button class="button button--secondary open-details-btn" data-service="perks" type="button">Подробнее</button>
+                <button class="button button--primary open-dialog-btn" data-title="Ребаланс перков" type="button">Заказать</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4. Исправление CTD -->
+          <article class="card" data-category="fixes">
+            <img class="card__image" src="images/clean-code.jpg" alt="Исправление CTD" loading="lazy">
+            <div class="card__body">
+              <h3 class="card__title">Исправление CTD и багов движка</h3>
+              <p class="card__text">Анализ crash-логов, оптимизация скриптов, чистка сохранений и патчи коллизий.</p>
+              <div class="card__meta">
+                <span class="card__price">от 5 000 ₽</span>
+                <span class="card__time">1–3 дня</span>
+              </div>
+              <div class="card__actions">
+                <button class="button button--secondary open-details-btn" data-service="fixes" type="button">Подробнее</button>
+                <button class="button button--primary open-dialog-btn" data-title="Исправление ошибок" type="button">Заказать</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. Ретекстур интерфейса -->
+          <article class="card" data-category="graphics">
+            <img class="card__image" src="images/interface-retexture.jpg" alt="Ретекстур интерфейса" loading="lazy">
+            <div class="card__body">
+              <h3 class="card__title">Ретекстур интерфейса и UI</h3>
+              <p class="card__text">Современный минималистичный HUD, поддержка сверхшироких мониторов 21:9.</p>
+              <div class="card__meta">
+                <span class="card__price">от 9 000 ₽</span>
+                <span class="card__time">4–6 дней</span>
+              </div>
+              <div class="card__actions">
+                <button class="button button--secondary open-details-btn" data-service="ui" type="button">Подробнее</button>
+                <button class="button button--primary open-dialog-btn" data-title="Ретекстур интерфейса" type="button">Заказать</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6. Сюжетный квест -->
+          <article class="card" data-category="gameplay">
+            <span class="badge badge--popular">Популярное</span>
+            <img class="card__image" src="images/story-quest.jpg" alt="Сюжетный квест" loading="lazy">
+            <div class="card__body">
+              <h3 class="card__title">Разработка сюжетного квеста</h3>
+              <p class="card__text">Сценарий, озвучка, спавн локаций, диалоговая система с развилками.</p>
+              <div class="card__meta">
+                <span class="card__price">от 35 000 ₽</span>
+                <span class="card__time">от 25 дней</span>
+              </div>
+              <div class="card__actions">
+                <button class="button button--secondary open-details-btn" data-service="quest" type="button">Подробнее</button>
+                <button class="button button--primary open-dialog-btn" data-title="Сюжетный квест" type="button">Заказать</button>
+              </div>
+            </div>
+          </article>
+        </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <dialog class="dialog" id="order-dialog">
+    <div class="dialog__content">
+      <h2 class="dialog__title">Оформить заказ услуги</h2>
+      <form class="order-form" id="order-dialog-form">
+        <input type="hidden" id="dialog-service" name="service">
+        <div class="order-form__field">
+          <label class="order-form__label" for="dlg-name">Ваше имя *</label>
+          <input class="order-form__input" type="text" id="dlg-name" required placeholder="Дмитрий">
+        </div>
+        <div class="order-form__field">
+          <label class="order-form__label" for="dlg-email">Email *</label>
+          <input class="order-form__input" type="email" id="dlg-email" required placeholder="user@modforge.ru">
+        </div>
+        <div class="order-form__field">
+          <label class="order-form__label" for="dlg-comment">Описание пожеланий</label>
+          <textarea class="order-form__textarea" id="dlg-comment" rows="3"></textarea>
+        </div>
+        <div class="dialog__actions">
+          <button class="button button--secondary" type="button" id="close-dialog-btn">Закрыть</button>
+          <button class="button button--primary" type="submit">Отправить заявку</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- Подвал -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__about">
+          <a class="site-footer__logo" href="index.html">
+            <img class="site-footer__logo-img" src="images/logo.svg" alt="" width="32" height="32">
+            ModForge<span>Studio</span>
+          </a>
+          <p class="site-footer__slogan">Студия разработки модификаций для компьютерных игр: графика, новые предметы, скрипты и исправление ошибок. Стабильный код и поддержка после патчей.</p>
+        </div>
+        <nav class="site-footer__nav" aria-label="Разделы сайта">
+          <h2 class="site-footer__title">Разделы</h2>
+          <ul class="site-footer__list">
+            <li class="site-footer__list-item"><a class="site-footer__link" href="index.html">Главная</a></li>
+            <li class="site-footer__list-item"><a class="site-footer__link" href="catalog.html">Каталог услуг</a></li>
+            <li class="site-footer__list-item"><a class="site-footer__link" href="about.html">О нас</a></li>
+            <li class="site-footer__list-item"><a class="site-footer__link" href="contacts.html">Контакты</a></li>
+          </ul>
+        </nav>
+        <div class="site-footer__contacts">
+          <h2 class="site-footer__title">Контакты</h2>
+          <p class="site-footer__contact"><i class="bi bi-geo-alt" aria-hidden="true"></i>г. Москва, пр. Вернадского, д. 78, РТУ МИРЭА</p>
+          <p class="site-footer__contact"><i class="bi bi-telephone" aria-hidden="true"></i><a href="tel:+74957885699">+7 (495) 788-56-99</a></p>
+          <p class="site-footer__contact"><i class="bi bi-clock" aria-hidden="true"></i>Пн–Пт: 10:00–19:00 · Сб: 11:00–16:00 · Вс: выходной</p>
+          <p class="site-footer__contact"><i class="bi bi-envelope" aria-hidden="true"></i><a href="mailto:dev@modforge.ru">dev@modforge.ru</a></p>
+          <p class="site-footer__contact"><i class="bi bi-telegram" aria-hidden="true"></i><a href="https://t.me/modforge_studio" target="_blank" rel="noopener">@modforge_studio</a></p>
+          <p class="site-footer__contact"><i class="bi bi-chat-dots" aria-hidden="true"></i><a href="https://vk.com/modforge_studio" target="_blank" rel="noopener">vk.com/modforge_studio</a></p>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p>&copy; 2026 ModForge Studio. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Вернуться наверх">
+    <div class="back-to-top__inner">
+      <span class="back-to-top__arrow">▲</span>
+    </div>
+  </button>
+  <!-- Модальное окно "Подробнее об услуге" -->
+<dialog class="dialog dialog--details" id="service-details-dialog">
+  <div class="details-modal">
+    <div class="details-modal__header">
+      <img id="details-img" class="details-modal__image" src="" alt="Иллюстрация услуги">
+      <div class="details-modal__header-overlay">
+        <div>
+          <span id="details-category" class="details-modal__category">Категория</span>
+          <h2 id="details-title" class="details-modal__title">Название услуги</h2>
+        </div>
+      </div>
+      <button type="button" class="details-modal__close" id="close-details-btn" aria-label="Закрыть">✕</button>
+    </div>
+    <div class="details-modal__body">
+      <p id="details-full-desc" class="details-modal__desc"></p>
+      
+      <div>
+        <h3 class="details-modal__section-title"><i class="bi bi-check-circle-fill"></i> Что входит в услугу:</h3>
+        <ul id="details-includes" class="details-modal__list"></ul>
+      </div>
+
+      <div>
+        <h3 class="details-modal__section-title"><i class="bi bi-controller"></i> Поддерживаемые платформы / игры:</h3>
+        <div id="details-platforms" class="details-modal__tags"></div>
+      </div>
+    </div>
+    <div class="details-modal__footer">
+      <div class="details-modal__pricing">
+        <span id="details-price" class="details-modal__price">от 8 000 ₽</span>
+        <span id="details-time" class="details-modal__time">3–5 дней</span>
+      </div>
+      <div class="details-modal__actions">
+        <button class="button button--secondary" type="button" id="cancel-details-btn">Закрыть</button>
+        <button class="button button--primary" type="button" id="details-order-btn">Заказать услугу</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+</body>
+</html>
