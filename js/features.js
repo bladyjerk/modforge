@@ -183,6 +183,7 @@
   /* -------------------------------------------------------------------
      3. Курсор «кузня»: точка + прицел, искры при клике
      ------------------------------------------------------------------- */
+  let cursorEls = null;
   if (finePointer && !reduceMotion) {
     root.classList.add('has-cursor');
     const dot = document.createElement('div');
@@ -191,6 +192,7 @@
     ring.className = 'cursor-ring';
     ring.innerHTML = '<div class="cursor-ring__inner"></div>';
     document.body.append(dot, ring);
+    cursorEls = { dot, ring };
 
     let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
     const interactive = 'a, button, summary, label, select, [role="button"], .card, .portfolio-card, input[type="radio"], input[type="checkbox"]';
@@ -223,7 +225,7 @@
         s.className = 'cursor-spark';
         s.style.left = `${e.clientX - 2}px`;
         s.style.top = `${e.clientY - 2}px`;
-        document.body.appendChild(s);
+        (document.querySelector('dialog[open]') || document.body).appendChild(s);
         const angle = Math.random() * Math.PI * 2;
         const dist = 20 + Math.random() * 40;
         s.animate([
@@ -334,6 +336,7 @@
     sInput.value = '';
     renderSearch();
     searchDialog.showModal();
+    if (cursorEls) searchDialog.append(cursorEls.dot, cursorEls.ring);
     setTimeout(() => sInput.focus(), 30);
   }
 
@@ -350,6 +353,7 @@
     const a = e.target.closest('a');
     if (a) searchDialog.close();
   });
+  searchDialog.addEventListener('close', () => { if (cursorEls) document.body.append(cursorEls.dot, cursorEls.ring); });
   searchDialog.querySelector('.search-box__esc').addEventListener('click', () => searchDialog.close());
   searchDialog.addEventListener('click', (e) => { if (e.target === searchDialog) searchDialog.close(); });
 

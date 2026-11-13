@@ -325,8 +325,6 @@ html.cursor-hover .cursor-ring__inner {
   border-color: var(--color-primary);
 }
 html.cursor-down .cursor-ring__inner { transform: scale(.7) rotate(90deg); }
-html.cursor-text .cursor-ring,
-html.cursor-text .cursor-dot { opacity: 0 !important; }
 
 .cursor-spark {
   position: fixed;
