@@ -20,6 +20,14 @@
   --color-success: #2ea44f;
   --color-error: #da3633;
 
+  --color-heading: #ffffff;
+  --header-bg: rgba(24, 27, 36, 0.95);
+  --hero-glow: #1b2738;
+  --footer-end: #0b0d12;
+  --cta-end: #1c2333;
+  --tint: rgba(255, 255, 255, 0.06);
+  --surface-sunken: rgba(11, 15, 25, 0.5);
+
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --container-width: 1200px;
   --radius-sm: 6px;
@@ -79,7 +87,7 @@ a:hover {
    3. Шапка (Sticky Header)
    =============================== */
 .site-header {
-  background-color: rgba(24, 27, 36, 0.95);
+  background-color: var(--header-bg);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--color-border);
   position: sticky;
@@ -103,7 +111,7 @@ a:hover {
   gap: 10px;
   font-size: 1.4rem;
   font-weight: 800;
-  color: #fff;
+  color: var(--color-heading);
   letter-spacing: 0.5px;
   white-space: nowrap;
 }
@@ -145,7 +153,7 @@ a:hover {
 
 .site-nav__link:hover,
 .site-nav__link--active {
-  color: #fff;
+  color: var(--color-heading);
   background-color: var(--color-surface-hover);
 }
 
@@ -183,7 +191,7 @@ a:hover {
 .hero {
   padding: clamp(40px, 8vw, 80px) 0;
   text-align: center;
-  background: radial-gradient(circle at center, #1b2738 0%, var(--color-bg) 70%);
+  background: radial-gradient(circle at center, var(--hero-glow) 0%, var(--color-bg) 70%);
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -203,7 +211,7 @@ a:hover {
   font-size: clamp(1.8rem, 4vw, 2.8rem);
   line-height: 1.25;
   margin-bottom: 20px;
-  color: #fff;
+  color: var(--color-heading);
 }
 
 .hero__text {
@@ -278,7 +286,7 @@ a:hover {
 .section__title {
   font-size: clamp(1.5rem, 3vw, 2rem);
   margin-bottom: 16px;
-  color: #fff;
+  color: var(--color-heading);
 }
 
 .section__header {
@@ -335,7 +343,7 @@ a:hover {
 
 .card__title {
   font-size: 1.25rem;
-  color: #fff;
+  color: var(--color-heading);
   margin: 12px 0 8px;
 }
 
@@ -460,7 +468,7 @@ a:hover {
 }
 
 .portfolio-card__title {
-  color: #fff;
+  color: var(--color-heading);
   font-size: 1.25rem;
   margin-bottom: 8px;
 }
@@ -510,7 +518,7 @@ a:hover {
 .catalog-filters__title {
   font-size: 1.2rem;
   margin-bottom: 16px;
-  color: #fff;
+  color: var(--color-heading);
 }
 
 .catalog-filters__group {
@@ -569,7 +577,7 @@ a:hover {
   background-color: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
-  color: #fff;
+  color: var(--color-heading);
   font-family: inherit;
   font-size: 0.95rem;
 }
@@ -612,7 +620,7 @@ a:hover {
 .faq-block__title {
   font-size: 1.3rem;
   margin-bottom: 16px;
-  color: #fff;
+  color: var(--color-heading);
 }
 
 .faq-item {
@@ -655,7 +663,7 @@ a:hover {
 .dialog__title {
   font-size: 1.4rem;
   margin-bottom: 16px;
-  color: #fff;
+  color: var(--color-heading);
 }
 
 .dialog__actions {
@@ -676,7 +684,7 @@ a:hover {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: #0f1117;
+  background: var(--color-bg);
   border: 2px solid var(--color-primary);
   box-shadow: 0 0 16px rgba(0, 180, 216, 0.4);
   cursor: pointer;
@@ -702,8 +710,8 @@ a:hover {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: #e6edf3;
-  color: #0f1117;
+  background: var(--color-text);
+  color: var(--color-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -720,7 +728,7 @@ a:hover {
    =============================== */
 .site-footer {
   border-top: 1px solid var(--color-border);
-  background: linear-gradient(var(--color-surface), #0b0d12);
+  background: linear-gradient(var(--color-surface), var(--footer-end));
   color: var(--color-muted);
   padding: 48px 0 24px;
   margin-top: 60px;
@@ -737,7 +745,7 @@ a:hover {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: #fff;
+  color: var(--color-heading);
   font-size: 1.25rem;
   font-weight: 800;
 }
@@ -747,7 +755,7 @@ a:hover {
 }
 
 .site-footer .site-footer__logo {
-  color: #fff;
+  color: var(--color-heading);
 }
 
 .site-footer .site-footer__logo:hover {
@@ -767,7 +775,7 @@ a:hover {
 }
 
 .site-footer__title {
-  color: #fff;
+  color: var(--color-heading);
   font-size: 1rem;
   font-weight: 700;
   margin-bottom: 12px;
@@ -786,7 +794,7 @@ a:hover {
 }
 
 .site-footer a:hover {
-  color: #fff;
+  color: var(--color-heading);
 }
 
 .site-footer__contact {
@@ -837,7 +845,7 @@ a:hover {
 
 .contacts-map__title {
   font-size: 1.3rem;
-  color: #fff;
+  color: var(--color-heading);
   margin-bottom: 14px;
 }
 
@@ -868,7 +876,7 @@ a:hover {
 
 .section__subheading {
   font-size: 1.25rem;
-  color: #fff;
+  color: var(--color-heading);
   margin: 36px 0 16px;
 }
 
@@ -976,7 +984,7 @@ a:hover {
 
 .feature-card__title {
   font-size: 1.15rem;
-  color: #fff;
+  color: var(--color-heading);
 }
 
 .feature-card__text {
@@ -1012,7 +1020,7 @@ a:hover {
 }
 
 .step-card__title {
-  color: #fff;
+  color: var(--color-heading);
   font-size: 1.1rem;
 }
 
@@ -1052,7 +1060,7 @@ a:hover {
 
 .game-badge__info strong {
   display: block;
-  color: #fff;
+  color: var(--color-heading);
   font-size: 0.95rem;
 }
 
@@ -1094,7 +1102,7 @@ a:hover {
 
 .review-card__name {
   display: block;
-  color: #fff;
+  color: var(--color-heading);
   font-weight: 600;
   font-size: 0.9rem;
 }
@@ -1107,7 +1115,7 @@ a:hover {
 
 /* CTA баннер перед футером */
 .cta-banner {
-  background: linear-gradient(135deg, #181b24 0%, #1c2333 100%);
+  background: linear-gradient(135deg, var(--color-surface) 0%, var(--cta-end) 100%);
   border: 1px solid var(--color-primary);
   border-radius: var(--radius-md);
   padding: 45px 30px;
@@ -1117,7 +1125,7 @@ a:hover {
 
 .cta-banner__title {
   font-size: 1.8rem;
-  color: #fff;
+  color: var(--color-heading);
   margin-bottom: 12px;
 }
 
@@ -1289,7 +1297,7 @@ a:hover {
   margin-top: 8px;
 }
 .details-modal__tag {
-  background: rgba(255,255,255,0.06);
+  background: var(--tint);
   border: 1px solid var(--color-border);
   padding: 4px 8px;
   border-radius: var(--radius-sm);
@@ -1301,7 +1309,7 @@ a:hover {
   align-items: center;
   padding: 16px 20px;
   border-top: 1px solid var(--color-border);
-  background: rgba(11, 15, 25, 0.5);
+  background: var(--surface-sunken);
   gap: 12px;
 }
 .details-modal__price {

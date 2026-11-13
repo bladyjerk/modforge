@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Личный кабинет клиента ModForge Studio: статус и готовность ваших модов.">
+  <title>Личный кабинет — ModForge Studio</title>
+  <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script>
+    // Применяем сохранённую тему до отрисовки, чтобы не было «мигания»
+    try { if (localStorage.getItem('mf-theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body class="page">
+  <header class="site-header">
+    <div class="site-header__inner container">
+      <a class="site-header__logo" href="index.html">
+        <img class="site-header__logo-img" src="images/logo.svg" alt="" width="36" height="36">
+        ModForge<span>Studio</span>
+      </a>
+      <div class="site-header__actions">
+        <nav class="site-nav" aria-label="Основная навигация">
+          <ul class="site-nav__list">
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог услуг</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="about.html">О нас</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+          </ul>
+        </nav>
+        <div class="site-header__tools">
+          <button class="icon-btn theme-toggle" type="button" aria-label="Переключить светлую / тёмную тему" title="Сменить тему"><i class="bi bi-sun" aria-hidden="true"></i></button>
+          <a class="icon-btn icon-btn--active" href="cabinet.html" aria-current="page" aria-label="Личный кабинет" title="Личный кабинет"><i class="bi bi-person-circle" aria-hidden="true"></i></a>
+          <a class="button button--primary site-header__order-btn" href="contacts.html#order">Заказать</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-content container">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a class="breadcrumbs__link" href="index.html">Главная</a>
+      <span class="breadcrumbs__separator">/</span>
+      <span class="breadcrumbs__current">Личный кабинет</span>
+    </nav>
+
+    <!-- Вход в кабинет -->
+    <section class="cabinet-auth" id="cabinet-login" hidden>
+      <div class="cabinet-auth__icon"><i class="bi bi-person-circle" aria-hidden="true"></i></div>
+      <h1 class="section__title">Вход в личный кабинет</h1>
+      <p class="section__text">Отслеживайте готовность заказанных модов в реальном времени.</p>
+      <form class="order-form" id="cabinet-login-form">
+        <div class="order-form__field">
+          <label class="order-form__label" for="cab-name">Ваше имя *</label>
+          <input class="order-form__input" type="text" id="cab-name" required placeholder="Дмитрий">
+        </div>
+        <div class="order-form__field">
+          <label class="order-form__label" for="cab-email">Электронная почта *</label>
+          <input class="order-form__input" type="email" id="cab-email" required placeholder="dmitry@example.com">
+        </div>
+        <button class="button button--primary button--full" type="submit">Войти</button>
+      </form>
+      <p class="cabinet-auth__hint"><i class="bi bi-info-circle" aria-hidden="true"></i> Демо-режим: данные хранятся только в вашем браузере. Заявки, отправленные через формы сайта, автоматически появляются здесь.</p>
+    </section>
+
+    <!-- Кабинет -->
+    <section id="cabinet-panel" hidden>
+      <div class="cabinet-head">
+        <div class="cabinet-head__user">
+          <div class="cabinet-head__avatar" id="cab-avatar">?</div>
+          <div>
+            <h1 class="cabinet-head__name" id="cab-user-name">Пользователь</h1>
+            <div class="cabinet-head__email" id="cab-user-email"></div>
+          </div>
+        </div>
+        <div class="dialog__actions" style="margin-top:0">
+          <a class="button button--primary" href="catalog.html"><i class="bi bi-plus-lg" aria-hidden="true"></i>&nbsp;Новый заказ</a>
+          <button class="button button--secondary" type="button" id="cab-logout"><i class="bi bi-box-arrow-right" aria-hidden="true"></i>&nbsp;Выйти</button>
+        </div>
+      </div>
+
+      <div class="cabinet-stats">
+        <div class="cabinet-stat"><span class="cabinet-stat__num" id="stat-total">0</span><span class="cabinet-stat__label">Всего заказов</span></div>
+        <div class="cabinet-stat"><span class="cabinet-stat__num" id="stat-work">0</span><span class="cabinet-stat__label">В работе</span></div>
+        <div class="cabinet-stat"><span class="cabinet-stat__num" id="stat-done">0</span><span class="cabinet-stat__label">Готово к скачиванию</span></div>
+      </div>
+
+      <h2 class="section__title">Мои моды</h2>
+      <div class="orders-list" id="orders-list"></div>
+    </section>
+  </main>
+
+  <!-- Подвал -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__about">
+          <a class="site-footer__logo" href="index.html">
+            <img class="site-footer__logo-img" src="images/logo.svg" alt="" width="32" height="32">
+            ModForge<span>Studio</span>
+          </a>
+          <p class="site-footer__slogan">Студия разработки модификаций для компьютерных игр: графика, новые предметы, скрипты и исправление ошибок. Стабильный код и поддержка после патчей.</p>
+        </div>
+        <nav class="site-footer__nav" aria-label="Разделы сайта">
+          <h2 class="site-footer__title">Разделы</h2>
+          <ul class="site-footer__list">
+            <li class="site-footer__list-item"><a class="site-footer__link" href="index.html">Главная</a></li>
+            <li class="site-footer__list-item"><a class="site-footer__link" href="catalog.html">Каталог услуг</a></li>
+            <li class="site-footer__list-item"><a class="site-footer__link" href="about.html">О нас</a></li>
+            <li class="site-footer__list-item"><a class="site-footer__link" href="contacts.html">Контакты</a></li>
+            <li class="site-footer__list-item"><a class="site-footer__link" href="cabinet.html">Личный кабинет</a></li>
+          </ul>
+        </nav>
+        <div class="site-footer__contacts">
+          <h2 class="site-footer__title">Контакты</h2>
+          <p class="site-footer__contact"><i class="bi bi-geo-alt" aria-hidden="true"></i>г. Москва, пр. Вернадского, д. 78, РТУ МИРЭА</p>
+          <p class="site-footer__contact"><i class="bi bi-telephone" aria-hidden="true"></i><a href="tel:+74957885699">+7 (495) 788-56-99</a></p>
+          <p class="site-footer__contact"><i class="bi bi-clock" aria-hidden="true"></i>Пн–Пт: 10:00–19:00 · Сб: 11:00–16:00 · Вс: выходной</p>
+          <p class="site-footer__contact"><i class="bi bi-envelope" aria-hidden="true"></i><a href="mailto:dev@modforge.ru">dev@modforge.ru</a></p>
+          <p class="site-footer__contact"><i class="bi bi-telegram" aria-hidden="true"></i><a href="https://t.me/modforge_studio" target="_blank" rel="noopener">@modforge_studio</a></p>
+          <p class="site-footer__contact"><i class="bi bi-chat-dots" aria-hidden="true"></i><a href="https://vk.com/modforge_studio" target="_blank" rel="noopener">vk.com/modforge_studio</a></p>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p>&copy; 2026 ModForge Studio. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Вернуться наверх">
+    <div class="back-to-top__inner">
+      <span class="back-to-top__arrow">▲</span>
+    </div>
+  </button>
+</body>
+</html>
