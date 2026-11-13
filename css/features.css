@@ -723,3 +723,8 @@ html.cursor-down .cursor-ring__inner { transform: scale(.7) rotate(90deg); }
   .header-tools { width: 100%; }
   .header-tools .site-header__order-btn { flex: 1; }
 }
+
+/* Не даём прокрутке «проваливаться» на страницу, пока открыт поиск */
+.search-dialog { overscroll-behavior: contain; }
+.search-results { overscroll-behavior: contain; }
+html.search-lock, html.search-lock body { overflow: hidden; }

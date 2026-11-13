@@ -335,6 +335,7 @@
     sActive = 0;
     sInput.value = '';
     renderSearch();
+    document.documentElement.classList.add('search-lock');
     searchDialog.showModal();
     if (cursorEls) searchDialog.append(cursorEls.dot, cursorEls.ring);
     setTimeout(() => sInput.focus(), 30);
@@ -353,7 +354,7 @@
     const a = e.target.closest('a');
     if (a) searchDialog.close();
   });
-  searchDialog.addEventListener('close', () => { if (cursorEls) document.body.append(cursorEls.dot, cursorEls.ring); });
+  searchDialog.addEventListener('close', () => { document.documentElement.classList.remove('search-lock'); if (cursorEls) document.body.append(cursorEls.dot, cursorEls.ring); });
   searchDialog.querySelector('.search-box__esc').addEventListener('click', () => searchDialog.close());
   searchDialog.addEventListener('click', (e) => { if (e.target === searchDialog) searchDialog.close(); });
 
