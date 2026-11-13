@@ -17,21 +17,16 @@
   --badge-new: #06d6a0;
   --badge-dev: #9d4edd;
   
+  --color-success: #2ea44f;
+  --color-error: #da3633;
+
   --color-heading: #ffffff;
   --header-bg: rgba(24, 27, 36, 0.95);
   --hero-glow: #1b2738;
   --footer-end: #0b0d12;
-  --cta-from: #181b24;
-  --cta-to: #1c2333;
-  --tag-bg: rgba(255, 255, 255, 0.06);
-  --panel-bg: rgba(11, 15, 25, 0.5);
-  --glow: rgba(0, 180, 216, 0.35);
-  --glow-soft: rgba(0, 180, 216, 0.18);
-  --card-gradient-1: rgba(0, 180, 216, 0.28);
-  --card-gradient-2: rgba(157, 78, 221, 0.16);
-
-  --color-success: #2ea44f;
-  --color-error: #da3633;
+  --cta-end: #1c2333;
+  --tint: rgba(255, 255, 255, 0.06);
+  --surface-sunken: rgba(11, 15, 25, 0.5);
 
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --container-width: 1200px;
@@ -438,7 +433,6 @@ a:hover {
 }
 
 .portfolio-card {
-  position: relative;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -716,8 +710,8 @@ a:hover {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: #e6edf3;
-  color: #0f1117;
+  background: var(--color-text);
+  color: var(--color-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -975,9 +969,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
-  position: relative;
-  overflow: hidden;
+  transition: transform 0.2s, border-color 0.2s;
 }
 
 .feature-card:hover {
@@ -1123,7 +1115,7 @@ a:hover {
 
 /* CTA баннер перед футером */
 .cta-banner {
-  background: linear-gradient(135deg, var(--cta-from) 0%, var(--cta-to) 100%);
+  background: linear-gradient(135deg, var(--color-surface) 0%, var(--cta-end) 100%);
   border: 1px solid var(--color-primary);
   border-radius: var(--radius-md);
   padding: 45px 30px;
@@ -1178,8 +1170,8 @@ a:hover {
   border-color: var(--color-primary);
   box-shadow:
     0 0 0 1px var(--color-primary),
-    0 10px 30px var(--glow),
-    0 0 45px var(--glow-soft);
+    0 10px 30px rgba(0, 180, 216, 0.35),
+    0 0 45px rgba(0, 180, 216, 0.18);
 }
 
 .card:hover .card__image,
@@ -1286,7 +1278,7 @@ a:hover {
   gap: 6px;
 }
 .details-modal__list li {
-  color: var(--color-muted);
+  color: var(--color-text-muted);
   font-size: 0.9rem;
   padding-left: 20px;
   position: relative;
@@ -1305,7 +1297,7 @@ a:hover {
   margin-top: 8px;
 }
 .details-modal__tag {
-  background: var(--tag-bg);
+  background: var(--tint);
   border: 1px solid var(--color-border);
   padding: 4px 8px;
   border-radius: var(--radius-sm);
@@ -1317,7 +1309,7 @@ a:hover {
   align-items: center;
   padding: 16px 20px;
   border-top: 1px solid var(--color-border);
-  background: var(--panel-bg);
+  background: var(--surface-sunken);
   gap: 12px;
 }
 .details-modal__price {
@@ -1327,534 +1319,6 @@ a:hover {
 }
 .details-modal__time {
   font-size: 0.82rem;
-  color: var(--color-muted);
+  color: var(--color-text-muted);
   display: block;
-}
-
-/* =====================================================
-   ФИШКА 1. Светлая тема (переключатель в шапке)
-   ===================================================== */
-html[data-theme="light"] {
-  --color-bg: #f3f6fb;
-  --color-surface: #ffffff;
-  --color-surface-hover: #e8eef6;
-  --color-border: #d5deea;
-  --color-text: #1c2533;
-  --color-muted: #5a6577;
-  --color-heading: #0d1522;
-  --color-primary: #0090b8;
-  --color-primary-hover: #0077a0;
-  --header-bg: rgba(255, 255, 255, 0.92);
-  --hero-glow: #d6eef7;
-  --footer-end: #e6edf6;
-  --cta-from: #ffffff;
-  --cta-to: #e3f4fa;
-  --tag-bg: rgba(13, 21, 34, 0.05);
-  --panel-bg: #f3f6fb;
-  --glow: rgba(0, 144, 184, 0.22);
-  --glow-soft: rgba(0, 144, 184, 0.12);
-  --card-gradient-1: rgba(0, 144, 184, 0.2);
-  --card-gradient-2: rgba(157, 78, 221, 0.12);
-  color-scheme: light;
-}
-
-html[data-theme="light"] .card__image,
-html[data-theme="light"] .portfolio-card__img {
-  filter: none;
-}
-
-html[data-theme="light"] .back-to-top__inner {
-  background: var(--color-primary);
-  color: #ffffff;
-}
-
-/* Плавная смена цветов при переключении темы */
-body.page,
-.site-header,
-.site-footer,
-.card,
-.portfolio-card,
-.feature-card,
-.step-card,
-.review-card,
-.faq-item,
-.dialog {
-  transition-property: background-color, color, border-color, transform, box-shadow;
-  transition-duration: 0.3s;
-}
-
-.site-header__tools {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.icon-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-surface-hover);
-  border: 1px solid var(--color-border);
-  color: var(--color-heading);
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background-color 0.2s, border-color 0.2s, transform 0.2s, color 0.2s;
-  flex-shrink: 0;
-}
-
-.icon-btn:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-  transform: rotate(-12deg);
-}
-
-.icon-btn--active {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
-
-/* =====================================================
-   ФИШКА 2. Градиент при наведении на карточку
-   (следует за курсором, цвета сайта)
-   ===================================================== */
-.card::after,
-.portfolio-card::after,
-.feature-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  border-radius: inherit;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  background:
-    radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), var(--card-gradient-1), transparent 60%),
-    linear-gradient(160deg, transparent 40%, var(--card-gradient-2) 100%);
-  z-index: 1;
-}
-
-.card:hover::after,
-.card:focus-within::after,
-.portfolio-card:hover::after,
-.portfolio-card:focus-within::after,
-.feature-card:hover::after {
-  opacity: 1;
-}
-
-.card .badge {
-  z-index: 2;
-}
-
-.feature-card:hover {
-  box-shadow: 0 10px 30px var(--glow);
-}
-
-/* =====================================================
-   ФИШКА 3. Плавное появление карточек при прокрутке
-   ===================================================== */
-@keyframes reveal-up {
-  from {
-    opacity: 0;
-    transform: translateY(32px) scale(0.97);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-.js-reveal .reveal:not(.reveal--in) {
-  opacity: 0;
-}
-
-.reveal--in {
-  animation: reveal-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
-  animation-delay: var(--reveal-delay, 0ms);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .js-reveal .reveal:not(.reveal--in) {
-    opacity: 1;
-  }
-  .reveal--in {
-    animation: none;
-  }
-}
-
-/* =====================================================
-   ФИШКА 4. Личный кабинет
-   ===================================================== */
-.cabinet-auth {
-  max-width: 460px;
-  margin: 30px auto 0;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: 28px;
-}
-
-.cabinet-auth__icon {
-  font-size: 2.6rem;
-  color: var(--color-primary);
-  line-height: 1;
-  margin-bottom: 10px;
-}
-
-.cabinet-auth__hint {
-  font-size: 0.85rem;
-  color: var(--color-muted);
-  margin-top: 14px;
-}
-
-.cabinet-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin: 10px 0 24px;
-}
-
-.cabinet-head__user {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.cabinet-head__avatar {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-primary), #9d4edd);
-  color: #ffffff;
-  font-weight: 800;
-  font-size: 1.4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cabinet-head__name {
-  color: var(--color-heading);
-  font-size: 1.4rem;
-  line-height: 1.2;
-}
-
-.cabinet-head__email {
-  color: var(--color-muted);
-  font-size: 0.9rem;
-}
-
-.cabinet-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
-  gap: 16px;
-  margin-bottom: 28px;
-}
-
-.cabinet-stat {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: 18px;
-}
-
-.cabinet-stat__num {
-  display: block;
-  font-size: 1.9rem;
-  font-weight: 800;
-  color: var(--color-primary);
-  line-height: 1.1;
-}
-
-.cabinet-stat__label {
-  color: var(--color-muted);
-  font-size: 0.85rem;
-}
-
-.orders-list {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.order-card {
-  position: relative;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: 22px;
-  overflow: hidden;
-}
-
-.order-card__top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.order-card__id {
-  font-size: 0.8rem;
-  color: var(--color-muted);
-  font-family: ui-monospace, Consolas, monospace;
-}
-
-.order-card__title {
-  color: var(--color-heading);
-  font-size: 1.2rem;
-  margin: 2px 0 4px;
-}
-
-.order-card__meta {
-  color: var(--color-muted);
-  font-size: 0.88rem;
-}
-
-.order-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 12px;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  background: var(--glow-soft);
-  color: var(--color-primary);
-  border: 1px solid var(--color-primary);
-  white-space: nowrap;
-}
-
-.order-status--done {
-  background: rgba(46, 164, 79, 0.15);
-  color: var(--color-success);
-  border-color: var(--color-success);
-}
-
-.progress {
-  margin: 18px 0 6px;
-}
-
-.progress__row {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.85rem;
-  color: var(--color-muted);
-  margin-bottom: 6px;
-}
-
-.progress__value {
-  color: var(--color-heading);
-  font-weight: 700;
-}
-
-.progress__track {
-  height: 10px;
-  border-radius: 999px;
-  background: var(--color-surface-hover);
-  overflow: hidden;
-}
-
-.progress__bar {
-  height: 100%;
-  width: 0;
-  border-radius: inherit;
-  background: linear-gradient(90deg, var(--color-primary), #9d4edd);
-  transition: width 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-
-.order-card--done .progress__bar {
-  background: linear-gradient(90deg, var(--color-success), #06d6a0);
-}
-
-.stages {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 6px;
-  margin-top: 16px;
-}
-
-.stages__item {
-  text-align: center;
-  font-size: 0.75rem;
-  color: var(--color-muted);
-  position: relative;
-}
-
-.stages__dot {
-  width: 28px;
-  height: 28px;
-  margin: 0 auto 6px;
-  border-radius: 50%;
-  border: 2px solid var(--color-border);
-  background: var(--color-bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-}
-
-.stages__item--done .stages__dot {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: #ffffff;
-}
-
-.stages__item--current .stages__dot {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-  box-shadow: 0 0 0 4px var(--glow-soft);
-  animation: pulse-dot 1.6s ease-in-out infinite;
-}
-
-.stages__item--current {
-  color: var(--color-heading);
-  font-weight: 700;
-}
-
-@keyframes pulse-dot {
-  50% { box-shadow: 0 0 0 8px transparent; }
-}
-
-.order-card__actions {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 18px;
-}
-
-.order-card__actions .button {
-  font-size: 0.88rem;
-  padding: 8px 14px;
-  gap: 6px;
-}
-
-.cabinet-empty {
-  text-align: center;
-  padding: 40px 20px;
-  color: var(--color-muted);
-  border: 1px dashed var(--color-border);
-  border-radius: var(--radius-md);
-}
-
-@media (max-width: 600px) {
-  .stages {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    row-gap: 14px;
-  }
-}
-
-/* =====================================================
-   ФИШКА 5. Калькулятор стоимости мода
-   ===================================================== */
-.calc {
-  margin-top: 40px;
-}
-
-.calc__box {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 24px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: 26px;
-}
-
-.calc__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 16px;
-}
-
-.calc__extras {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-top: 4px;
-}
-
-.calc__option {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  font-size: 0.88rem;
-  transition: border-color 0.2s, background-color 0.2s;
-}
-
-.calc__option:hover {
-  border-color: var(--color-primary);
-}
-
-.calc__option:has(input:checked) {
-  border-color: var(--color-primary);
-  background: var(--glow-soft);
-}
-
-.calc__option small {
-  margin-left: auto;
-  color: var(--color-muted);
-  white-space: nowrap;
-}
-
-.calc__result {
-  border-radius: var(--radius-md);
-  padding: 24px;
-  background: linear-gradient(160deg, var(--cta-to), var(--color-surface));
-  border: 1px solid var(--color-primary);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  justify-content: center;
-}
-
-.calc__label {
-  color: var(--color-muted);
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.calc__price {
-  font-size: clamp(2rem, 4vw, 2.6rem);
-  font-weight: 800;
-  color: var(--color-primary);
-  line-height: 1.1;
-}
-
-.calc__time {
-  color: var(--color-heading);
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.calc__note {
-  font-size: 0.8rem;
-  color: var(--color-muted);
-}
-
-@media (max-width: 860px) {
-  .calc__box,
-  .calc__grid,
-  .calc__extras {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .site-header__tools {
-    justify-content: center;
-  }
-  .site-header__tools .site-header__order-btn {
-    flex: 1;
-  }
 }
