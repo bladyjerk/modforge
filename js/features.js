@@ -191,8 +191,30 @@
     const ring = document.createElement('div');
     ring.className = 'cursor-ring';
     ring.innerHTML = '<div class="cursor-ring__inner"></div>';
-    document.body.append(dot, ring);
-    cursorEls = { dot, ring };
+    // Отдельный слой для курсора. Через Popover API он попадает в «верхний слой»
+    // браузера и всегда рисуется поверх любых окон (заявка, «Подробнее», поиск, проекты).
+    const layer = document.createElement('div');
+    layer.className = 'cursor-layer';
+    const canPopover = typeof layer.showPopover === 'function';
+    if (canPopover) layer.setAttribute('popover', 'manual');
+    layer.append(dot, ring);
+    document.body.append(layer);
+    cursorEls = { dot, ring, layer };
+
+    // Поднять курсор над самым верхним открытым окном
+    const raiseCursor = () => {
+      if (canPopover) {
+        try { if (layer.matches(':popover-open')) layer.hidePopover(); layer.showPopover(); } catch (e) {}
+      } else {
+        const open = [...document.querySelectorAll('dialog[open]')].pop();
+        (open || document.body).appendChild(layer);
+      }
+    };
+    raiseCursor();
+    // Следим за открытием/закрытием любых окон на странице, в т.ч. созданных позже
+    new MutationObserver((list) => {
+      if (list.some((m) => m.target.tagName === 'DIALOG')) raiseCursor();
+    }).observe(document.body, { subtree: true, attributes: true, attributeFilter: ['open'] });
 
     let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
     const interactive = 'a, button, summary, label, select, [role="button"], .card, .portfolio-card, input[type="radio"], input[type="checkbox"]';
@@ -225,7 +247,7 @@
         s.className = 'cursor-spark';
         s.style.left = `${e.clientX - 2}px`;
         s.style.top = `${e.clientY - 2}px`;
-        (document.querySelector('dialog[open]') || document.body).appendChild(s);
+        layer.appendChild(s);
         const angle = Math.random() * Math.PI * 2;
         const dist = 20 + Math.random() * 40;
         s.animate([
@@ -234,6 +256,150 @@
         ], { duration: 500 + Math.random() * 300, easing: 'cubic-bezier(.2,.7,.4,1)' }).onfinish = () => s.remove();
       }
     });
+  }
+
+  /* -------------------------------------------------------------------
+     3.1 Свои выпадающие списки вместо системных.
+     Системный список браузер рисует поверх всего, и курсор оказывался под ним.
+     Настоящий <select> остаётся в форме (значение, required, change).
+     ------------------------------------------------------------------- */
+  if (cursorEls) {
+    let openSel = null;
+
+    const closeAll = () => { if (openSel) openSel(false); };
+
+    function enhanceSelect(sel) {
+      if (sel.dataset.fselect || sel.multiple || sel.size > 1) return;
+      sel.dataset.fselect = '1';
+
+      const wrap = document.createElement('div');
+      wrap.className = 'fselect';
+      sel.parentNode.insertBefore(wrap, sel);
+      wrap.appendChild(sel);
+      sel.classList.add('fselect__native');
+      sel.tabIndex = -1;
+      sel.setAttribute('aria-hidden', 'true');
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'order-form__select fselect__btn';
+      btn.setAttribute('aria-haspopup', 'listbox');
+      btn.setAttribute('aria-expanded', 'false');
+      const label = sel.id && document.querySelector(`label[for="${sel.id}"]`);
+      if (label) { label.id = label.id || `${sel.id}-label`; btn.setAttribute('aria-labelledby', label.id); }
+      else if (sel.name) btn.setAttribute('aria-label', sel.name);
+      btn.innerHTML = '<span class="fselect__value"></span><i class="bi bi-chevron-down fselect__caret" aria-hidden="true"></i>';
+
+      const list = document.createElement('ul');
+      list.className = 'fselect__list';
+      list.setAttribute('role', 'listbox');
+      list.hidden = true;
+      wrap.append(btn, list);
+
+      let active = -1;
+      const opts = () => [...sel.options].filter((o) => !o.hidden);
+
+      function sync() {
+        const o = sel.options[sel.selectedIndex];
+        btn.querySelector('.fselect__value').textContent = o ? o.textContent : '';
+        btn.classList.toggle('is-placeholder', !sel.value);
+      }
+
+      function render() {
+        list.innerHTML = '';
+        opts().forEach((o, i) => {
+          const li = document.createElement('li');
+          li.className = 'fselect__option';
+          li.setAttribute('role', 'option');
+          li.textContent = o.textContent;
+          li.dataset.index = i;
+          if (o.disabled) li.setAttribute('aria-disabled', 'true');
+          if (o.selected) { li.setAttribute('aria-selected', 'true'); active = i; }
+          if (!o.value) li.classList.add('is-placeholder');
+          list.appendChild(li);
+        });
+        highlight();
+      }
+
+      function highlight() {
+        [...list.children].forEach((li, i) => li.classList.toggle('is-active', i === active));
+        const li = list.children[active];
+        if (li) li.scrollIntoView({ block: 'nearest' });
+      }
+
+      function choose(i) {
+        const o = opts()[i];
+        if (!o || o.disabled) return;
+        const changed = sel.value !== o.value;
+        sel.value = o.value;
+        sync();
+        wrap.classList.remove('is-error');
+        if (changed) {
+          sel.dispatchEvent(new Event('input', { bubbles: true }));
+          sel.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      }
+
+      function toggle(open) {
+        if (open === !list.hidden) return;
+        if (open) {
+          closeAll();
+          render();
+          list.hidden = false;
+          // Если снизу мало места — открываем вверх
+          const r = btn.getBoundingClientRect();
+          wrap.classList.toggle('fselect--up', innerHeight - r.bottom < Math.min(list.scrollHeight, 260) + 12 && r.top > innerHeight - r.bottom);
+          highlight();
+          openSel = toggle;
+        } else {
+          list.hidden = true;
+          if (openSel === toggle) openSel = null;
+        }
+        wrap.classList.toggle('is-open', open);
+        btn.setAttribute('aria-expanded', String(open));
+      }
+
+      btn.addEventListener('click', () => toggle(list.hidden));
+      list.addEventListener('pointerdown', (e) => e.preventDefault()); // фокус остаётся на кнопке
+      list.addEventListener('click', (e) => {
+        const li = e.target.closest('.fselect__option');
+        if (!li) return;
+        choose(+li.dataset.index);
+        toggle(false);
+        btn.focus();
+      });
+      list.addEventListener('pointermove', (e) => {
+        const li = e.target.closest('.fselect__option');
+        if (li && +li.dataset.index !== active) { active = +li.dataset.index; [...list.children].forEach((x, i) => x.classList.toggle('is-active', i === active)); }
+      });
+
+      btn.addEventListener('keydown', (e) => {
+        const n = opts().length;
+        if (list.hidden) {
+          if (['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key)) { e.preventDefault(); toggle(true); }
+          return;
+        }
+        if (e.key === 'ArrowDown') { e.preventDefault(); active = Math.min(n - 1, active + 1); highlight(); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); active = Math.max(0, active - 1); highlight(); }
+        else if (e.key === 'Home') { e.preventDefault(); active = 0; highlight(); }
+        else if (e.key === 'End') { e.preventDefault(); active = n - 1; highlight(); }
+        else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); choose(active); toggle(false); }
+        else if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); toggle(false); }
+        else if (e.key === 'Tab') toggle(false);
+      });
+
+      // Клик по подписи / фокус от проверки формы → на нашу кнопку
+      sel.addEventListener('focus', () => btn.focus());
+      sel.addEventListener('change', sync);
+      sel.addEventListener('invalid', () => wrap.classList.add('is-error'));
+      if (sel.form) sel.form.addEventListener('reset', () => setTimeout(() => { sync(); wrap.classList.remove('is-error'); }));
+      sync();
+    }
+
+    document.querySelectorAll('select').forEach(enhanceSelect);
+    document.addEventListener('pointerdown', (e) => { if (openSel && !e.target.closest('.fselect.is-open')) closeAll(); });
+    addEventListener('resize', closeAll);
+    document.addEventListener('scroll', (e) => { if (openSel && !(e.target.closest && e.target.closest('.fselect__list'))) closeAll(); }, true);
   }
 
   /* -------------------------------------------------------------------
@@ -337,7 +503,6 @@
     renderSearch();
     document.documentElement.classList.add('search-lock');
     searchDialog.showModal();
-    if (cursorEls) searchDialog.append(cursorEls.dot, cursorEls.ring);
     setTimeout(() => sInput.focus(), 30);
   }
 
@@ -354,7 +519,7 @@
     const a = e.target.closest('a');
     if (a) searchDialog.close();
   });
-  searchDialog.addEventListener('close', () => { document.documentElement.classList.remove('search-lock'); if (cursorEls) document.body.append(cursorEls.dot, cursorEls.ring); });
+  searchDialog.addEventListener('close', () => { document.documentElement.classList.remove('search-lock'); });
   searchDialog.querySelector('.search-box__esc').addEventListener('click', () => searchDialog.close());
   searchDialog.addEventListener('click', (e) => { if (e.target === searchDialog) searchDialog.close(); });
 
